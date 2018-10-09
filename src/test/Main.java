@@ -13,7 +13,7 @@ import java.util.concurrent.Future;
 
 public class Main{
 	
-	public static final int EXECUTIONS=60;
+	public static final int EXECUTIONS=50;
 	
 	public static void main(String args[]) throws InterruptedException, ExecutionException {
 		
