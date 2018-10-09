@@ -1,11 +1,10 @@
 package tuning;
 import java.util.Arrays;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import org.vu.contest.ContestEvaluation;
 
-import test.Method;
 
 public class Population {
 	private Child[] children;
@@ -30,7 +29,19 @@ public class Population {
 		ExecutorService executor = Executors.newFixedThreadPool(100);
 		for(int i=0;i<children.length;i++) {
 			if(!children[i].elitist) {
-				children[i].fitness=(double) executor.submit(new Method("KatsuuraEvaluation")).get();
+				try {
+					children[i].fitness=0;
+					for(int k=0;k<5;k++) {
+						children[i].fitness+=(double) executor.submit(new Method(GeneticAlgorithm.Func,children[i].getSequence()[0],children[i].getSequence()[1],children[i].getSequence()[2],children[i].getSequence()[3],children[i].getSequence()[4],children[i].getSequence()[5],children[i].getSequence()[6],children[i].getSequence()[7],children[i].getSequence()[8],children[i].getSequence()[9])).get();
+					}
+					children[i].fitness=children[i].fitness/5;
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ExecutionException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			evcount++;
 		}
@@ -56,19 +67,5 @@ public class Population {
 				children[i].elitist=false;
 			}
 		}
-		sortBySharedFitness();
-	}
-	public void sortBySharedFitness() {
-		Arrays.sort(children,(child1,child2) -> {
-			int flag=0;
-			double child1fit=child1.sharedFitness;
-			double child2fit=child2.sharedFitness;
-			if(child1fit > child2fit){
-				flag=-1;
-			}else if(child1fit < child2fit){
-				flag=1;
-			}
-			return flag;
-		});
 	}
 }

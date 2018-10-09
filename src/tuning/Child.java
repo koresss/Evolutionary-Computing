@@ -19,7 +19,7 @@ public class Child {
 		Random r=new Random();
     	sequence[0]=30+r.nextInt(196); //popsize=30-225
     	sequence[1]=0.01+r.nextDouble()*0.99; //mutationrate
-    	sequence[2]=r.nextInt(150); //elitism
+    	sequence[2]=r.nextInt((int) (sequence[0]/2)); //elitism
     	sequence[3]=2+r.nextInt(19); //tournament size=2-20
     	sequence[4]=0.1+r.nextDouble()*0.41;//tournament prob
     	

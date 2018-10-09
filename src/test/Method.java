@@ -36,7 +36,7 @@ public class Method implements Callable{
         } catch (IOException e) {
             //e.printStackTrace();
         }
-        System.out.println(output.split("java.lang.NullPointerException")[0]);
+        //System.out.println(output.split("java.lang.NullPointerException")[0]);
         System.out.println(output.split("Score: ")[1].split("Runtime")[0].trim());
         return Double.parseDouble(output.split("Score: ")[1].split("Runtime")[0].trim());
 	}

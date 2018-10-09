@@ -18,6 +18,7 @@ public class GeneticAlgorithm {
 	public static double tauPrime;
 	public static double sigmaBoundary;
 	public static double BLEND_CROSSOVER_ALPHA;
+	public static String Func;
 
 
 	
@@ -59,7 +60,27 @@ public class GeneticAlgorithm {
 				double min=chromosome1.getSequence()[x]-BLEND_CROSSOVER_ALPHA*d;
 				double max=chromosome1.getSequence()[x]+BLEND_CROSSOVER_ALPHA*d;
 				double amount=min + Math.random() * (max - min);
-					crossoverChromosome.getSequence()[x]=amount;
+				if(x==0 && amount<=1) {
+					crossoverChromosome.getSequence()[0]=100;
+					continue;
+				}
+				if(x==1 && (amount>1 || amount<0)) {
+					crossoverChromosome.getSequence()[1]=Math.random();
+					continue;
+				}
+				if(x==4 && (amount>1 || amount<0)) {
+					crossoverChromosome.getSequence()[4]=Math.random();
+					continue;
+				}
+				if(x==8 && (amount>1 || amount<0)) {
+					crossoverChromosome.getSequence()[8]=Math.random();
+					continue;
+				}
+				if(x==2 && amount>=crossoverChromosome.getSequence()[0]) {
+					crossoverChromosome.getSequence()[2]=crossoverChromosome.getSequence()[0]/2-1;
+					continue;
+				}
+				crossoverChromosome.getSequence()[x]=amount;
 			
 		} 
 		return crossoverChromosome;
@@ -78,8 +99,33 @@ public class GeneticAlgorithm {
 				}
 				if(r.nextDouble()<MUTATION_RATE) {
 					double xPrime=chromosome.getSequence()[x]+mutateChromosome.sigmas[x]*tauGaussian;
+					if(x==0 && xPrime<=1) {
+						mutateChromosome.getSequence()[0]=100;
+						continue;
+					}
+					if(x==1 && (xPrime>1 || xPrime<0)) {
+						mutateChromosome.getSequence()[1]=Math.random();
+						continue;
+					}
+					if(x==4 && (xPrime>1 || xPrime<0)) {
+						mutateChromosome.getSequence()[4]=Math.random();
+						continue;
+					}
+					if(x==8 && (xPrime>1 || xPrime<0)) {
+						mutateChromosome.getSequence()[8]=Math.random();
+						continue;
+					}
+					if(x==2 && xPrime>=mutateChromosome.getSequence()[0]) {
+						mutateChromosome.getSequence()[2]=mutateChromosome.getSequence()[0]/2-1;
+						continue;
+					}
 						mutateChromosome.getSequence()[x]=xPrime;
 				}else {
+
+					if(x==2 && chromosome.getSequence()[x]>=mutateChromosome.getSequence()[0]) {
+						mutateChromosome.getSequence()[2]=mutateChromosome.getSequence()[0]/2-1;
+						continue;
+					}
 					mutateChromosome.getSequence()[x]=chromosome.getSequence()[x];
 				}
 			}
