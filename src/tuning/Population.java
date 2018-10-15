@@ -32,10 +32,10 @@ public class Population {
 				try {
 					children[i].fitness=0;
 					System.out.println(i+Arrays.toString(children[i].getSequence()));
-					for(int k=0;k<5;k++) {
+					for(int k=0;k<2;k++) {
 						children[i].fitness+=(double) executor.submit(new Method(GeneticAlgorithm.Func,children[i].getSequence()[0],children[i].getSequence()[1],children[i].getSequence()[2],children[i].getSequence()[3],children[i].getSequence()[4],children[i].getSequence()[5],children[i].getSequence()[6],children[i].getSequence()[7],children[i].getSequence()[8],children[i].getSequence()[9])).get();
 					}
-					children[i].fitness=children[i].fitness/5;
+					children[i].fitness=children[i].fitness/2;
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

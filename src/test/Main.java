@@ -13,7 +13,7 @@ import java.util.concurrent.Future;
 
 public class Main{
 	
-	public static final int EXECUTIONS=50;
+	public static final int EXECUTIONS=10;
 	
 	public static void main(String args[]) throws InterruptedException, ExecutionException {
 		
@@ -23,9 +23,9 @@ public class Main{
         
 		ExecutorService executor = Executors.newFixedThreadPool(50);
 		for(int i =0;i<EXECUTIONS;i++) {
-			System.out.println(""+i);
-			 //results_cigar[i] = (double) executor.submit(new Method("BentCigarFunction")).get();
-			 results_schaffers[i] = (double) executor.submit(new Method("SchaffersEvaluation")).get();
+			//System.out.println(""+i);
+			 results_cigar[i] = (double) executor.submit(new Method("BentCigarFunction")).get();
+			 //results_schaffers[i] = (double) executor.submit(new Method("SchaffersEvaluation")).get();
 			 if(i%10==0 && i!=0) {
 				 //results_katsuura[(i/10)-1] = (double) executor.submit(new Method("KatsuuraEvaluation")).get();
 			 }

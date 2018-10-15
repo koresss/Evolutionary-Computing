@@ -15,7 +15,7 @@ public class Method implements Callable{
 
 	@Override
 	public Object call() throws Exception {
-		ProcessBuilder builder = new ProcessBuilder("java","-jar","C:\\Users\\Orestis\\Desktop\\MSC\\Evolutionary Computing\\assignmentfiles_2018\\assignmentfiles_2017\\testrun.jar","-submission=main.player30","-evaluation="+method,"-seed=1");
+		ProcessBuilder builder = new ProcessBuilder("java","-jar","C:\\Users\\Orestis\\Desktop\\MSC\\Evolutionary Computing\\assignmentfiles_2018\\assignmentfiles_2017\\testrun.jar","-submission=player30","-evaluation="+method,"-seed=1");
 		builder.redirectErrorStream(true);
 		builder.directory(new File("C:\\\\Users\\\\Orestis\\\\Desktop\\\\MSC\\\\Evolutionary Computing\\\\assignmentfiles_2018\\\\assignmentfiles_2017\\\\"));
 		Process process=null;

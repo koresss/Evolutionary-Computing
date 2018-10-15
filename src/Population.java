@@ -1,4 +1,4 @@
-package main;
+
 import java.util.Arrays;
 
 import org.vu.contest.ContestEvaluation;
@@ -7,6 +7,7 @@ public class Population {
 	ContestEvaluation evaluation_=player30.evaluation_;
 	private Child[] children;
 	public static int evcount=0;
+	private static Child bestChild=new Child().initializeChild();
 	
 	public Child[] getChildren() {
 		return children;
@@ -15,7 +16,9 @@ public class Population {
 	public Population(int length) {
 		children = new Child[length];
 	}
-
+	public Child getBestChild() {
+		return bestChild;
+	}
 	public Population initializePopulation(){
 		for(int x=0;x<children.length;x++){
 			children[x]=new Child().initializeChild();
@@ -57,6 +60,7 @@ public class Population {
 			}
 			return flag;
 		});
+		bestChild=children[0];
 		for(int i=0;i<children.length;i++) {
 			if(i<GeneticAlgorithm.KEEPBEST) {
 				children[i].elitist=true;

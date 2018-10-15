@@ -1,4 +1,4 @@
-package main;
+
 import org.vu.contest.ContestSubmission;
 import org.vu.contest.ContestEvaluation;
 
@@ -45,6 +45,9 @@ public class player30 implements ContestSubmission
 		// Do sth with property values, e.g. specify relevant settings of your algorithm
         if(isMultimodal){
         	if(!hasStructure) {//Katsuura
+        		/* Average (19 runs) Katsuura: 5.1022263865815525
+					Max (19 runs) Katsuura: 9.67494009196859
+					Min (19 runs) Katsuura: 0.6668800872017767 */
         		GeneticAlgorithm.POPULATION_SIZE=225;
         		GeneticAlgorithm.CHILD_MUTATION_RATE = 1;
         		GeneticAlgorithm.MUTATION_RATE = 0.5;
@@ -70,18 +73,20 @@ public class player30 implements ContestSubmission
         		GeneticAlgorithm.sigmaBoundary = 0.01; 
         		GeneticAlgorithm.BLEND_CROSSOVER_ALPHA = 0.5;
         		GeneticAlgorithm.FITNESS_SHARING_SIGMA = 4;*/
-        		GeneticAlgorithm.POPULATION_SIZE=194;
+
+        		GeneticAlgorithm.POPULATION_SIZE=229;
         		GeneticAlgorithm.CHILD_MUTATION_RATE = 1;
-        		GeneticAlgorithm.MUTATION_RATE = 0.4110124588193936;
-        		GeneticAlgorithm.KEEPBEST=71;
+        		GeneticAlgorithm.MUTATION_RATE = 0.06158542005132886;
+        		GeneticAlgorithm.KEEPBEST=82;
         		GeneticAlgorithm.TOURNAMENT_SELECTION_SIZE=3;
-        		GeneticAlgorithm.TOURNAMENT_SELECTION_PROBABILITY=0.875920431520043;
+        		GeneticAlgorithm.TOURNAMENT_SELECTION_PROBABILITY=0.8944528038597799;
         		
-        		GeneticAlgorithm.tau = 67.79814419781363;
-        		GeneticAlgorithm.tauPrime = 101.85545855532195;
+        		GeneticAlgorithm.tau = -60.169595077925976;
+        		GeneticAlgorithm.tauPrime = 181.61666921979605;
         		GeneticAlgorithm.sigmaBoundary = 0; 
-        		GeneticAlgorithm.BLEND_CROSSOVER_ALPHA = 0.87212126261062;
-        		GeneticAlgorithm.FITNESS_SHARING_SIGMA = 7.2205280126138724;
+        		GeneticAlgorithm.BLEND_CROSSOVER_ALPHA = 0.8548500198446678;
+        		GeneticAlgorithm.FITNESS_SHARING_SIGMA = 0;
+        		
         	}
         }else{	//BentCigar
 /*        	GeneticAlgorithm.POPULATION_SIZE=100;
@@ -96,17 +101,19 @@ public class player30 implements ContestSubmission
         	GeneticAlgorithm.sigmaBoundary = 0.1;
         	GeneticAlgorithm.BLEND_CROSSOVER_ALPHA = 0.5;
         	GeneticAlgorithm.FITNESS_SHARING_SIGMA = 15;*/
-        	GeneticAlgorithm.POPULATION_SIZE=124;
-        	GeneticAlgorithm.CHILD_MUTATION_RATE = 1;
-        	GeneticAlgorithm.MUTATION_RATE = 0.4706565226812687;
-        	GeneticAlgorithm.KEEPBEST=7;
-        	GeneticAlgorithm.TOURNAMENT_SELECTION_SIZE=20;
-        	GeneticAlgorithm.TOURNAMENT_SELECTION_PROBABILITY=0.6529241029163153;
         	
-        	GeneticAlgorithm.tau = -3.1806795951813234;
-        	GeneticAlgorithm.tauPrime = 100.72678644501849;
+
+        	GeneticAlgorithm.POPULATION_SIZE=163;
+        	GeneticAlgorithm.CHILD_MUTATION_RATE = 1;
+        	GeneticAlgorithm.MUTATION_RATE = 0.9419578714094395;
+        	GeneticAlgorithm.KEEPBEST=0;
+        	GeneticAlgorithm.TOURNAMENT_SELECTION_SIZE=17;
+        	GeneticAlgorithm.TOURNAMENT_SELECTION_PROBABILITY=0.7927369563555049;
+        	
+        	GeneticAlgorithm.tau = 6.526531030259164;
+        	GeneticAlgorithm.tauPrime = -186.97383318820718;
         	GeneticAlgorithm.sigmaBoundary = 0;
-        	GeneticAlgorithm.BLEND_CROSSOVER_ALPHA = 0.9062858493734676;
+        	GeneticAlgorithm.BLEND_CROSSOVER_ALPHA = 0.8080570819197654;
         	GeneticAlgorithm.FITNESS_SHARING_SIGMA = 0;
         }
         //Parameter overrides
@@ -139,6 +146,7 @@ public class player30 implements ContestSubmission
             population.evalFitness();
             gen++;
 			//System.out.println("evcount:"+Population.evcount+" gen:"+gen+" best fitness:"+population.getChildren()[0].fitness+"\n");
+			System.out.println(population.getBestChild().fitness);
         }
 
 	}
